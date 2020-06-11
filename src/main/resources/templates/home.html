@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<div align="center">
+    <h1>Manage Product</h1>
+    <a th:href="@{/product/export}">Export to CSV</a>
+    <a th:href="@{/product/exportExcel}">Export to Excel</a>
+    <a th:href="@{/product/exportPdf}">Export to Pdf</a>
+    <a href="/new">Create new product</a>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Option</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${product}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.email}"></td>
+            <td>
+                <a th:href="@{'/delete/'+${p.id}}">Delete</a>
+                &nbsp;&nbsp;
+                <a th:href="@{'/edit/'+${p.id}}">Edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
